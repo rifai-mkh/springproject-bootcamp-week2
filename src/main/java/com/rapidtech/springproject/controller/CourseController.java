@@ -2,6 +2,8 @@ package com.rapidtech.springproject.controller;
 
 import com.rapidtech.springproject.dto.CourseReqDto;
 import com.rapidtech.springproject.dto.CourseResDto;
+import com.rapidtech.springproject.dto.StudentReqDto;
+import com.rapidtech.springproject.dto.StudentResDto;
 import com.rapidtech.springproject.service.CourseService;
 import com.rapidtech.springproject.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,11 @@ public class CourseController {
     @ResponseStatus(HttpStatus.CREATED)
     public CourseResDto insertCourse(@RequestBody CourseReqDto courseReqDto){
         return courseService.insertStudent(courseReqDto);
+    }
+
+    @PutMapping("/{courseid}")
+    public CourseResDto updateStudent(@PathVariable("courseid") Long courseid,
+                                       @RequestBody CourseReqDto courseReqDto){
+        return courseService.updateCourse(courseid,courseReqDto);
     }
 }
