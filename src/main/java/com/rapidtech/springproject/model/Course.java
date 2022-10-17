@@ -20,7 +20,7 @@ public class Course {
     private Long courseid;
 
     private String title;
-    private Long credits;
+    private int credits;
 
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<Enrollment> enrollments;

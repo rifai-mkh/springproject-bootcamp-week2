@@ -4,6 +4,7 @@ import com.rapidtech.springproject.model.Course;
 import com.rapidtech.springproject.model.Enrollment;
 import com.rapidtech.springproject.model.Grade;
 import com.rapidtech.springproject.model.Student;
+import com.rapidtech.springproject.repository.CourseRepository;
 import org.apache.commons.logging.Log;
 import org.hibernate.Hibernate;
 import org.slf4j.Logger;
