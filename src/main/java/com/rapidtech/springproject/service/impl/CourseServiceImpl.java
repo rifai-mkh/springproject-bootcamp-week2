@@ -2,9 +2,7 @@ package com.rapidtech.springproject.service.impl;
 
 import com.rapidtech.springproject.dto.CourseReqDto;
 import com.rapidtech.springproject.dto.CourseResDto;
-import com.rapidtech.springproject.dto.StudentResDto;
 import com.rapidtech.springproject.model.Course;
-import com.rapidtech.springproject.model.Student;
 import com.rapidtech.springproject.repository.CourseRepository;
 import com.rapidtech.springproject.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +58,11 @@ public class CourseServiceImpl implements CourseService {
 
         return CourseResDto.builder().courseid(result.getCourseid())
                 .title(result.getTitle()).credits(result.getCredits()).build();
+    }
+
+    @Override
+    public void deleteCourse(Long courseid) {
+        courseRepository.deleteById(courseid);
     }
 
 }

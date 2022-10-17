@@ -34,4 +34,9 @@ public class CourseController {
                                        @RequestBody CourseReqDto courseReqDto){
         return courseService.updateCourse(courseid,courseReqDto);
     }
+    @DeleteMapping("/{courseid}")
+    public String deleteCourse(@PathVariable("courseid") Long courseid){
+        courseService.deleteCourse(courseid);
+        return "Delete course id: "+courseid.toString()+" berhasil.";
+    }
 }
