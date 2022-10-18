@@ -17,21 +17,13 @@ public class Enrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long enrollmentid;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseid")
     private Course course;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "studentid")
     private Student student;
 
-    /*@Column(nullable = false)
-    private Long courseid;
-
-    @Column(nullable = false)
-    private Long studentid;*/
-
-
-    @Enumerated
-    public Grade grade;
+    private int grade;
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.print.attribute.standard.DateTimeAtCreation;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,6 @@ public class Student {
     private String firstmidname;
     private Date enrollmentdate;
 
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
-    private List<Enrollment> enrollments;
+    @OneToMany(mappedBy = "student",fetch = FetchType.LAZY)
+    private List<Enrollment> enrollments = new ArrayList<Enrollment>();
 }

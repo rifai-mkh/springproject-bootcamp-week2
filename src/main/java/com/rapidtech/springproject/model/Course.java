@@ -8,6 +8,7 @@ import org.hibernate.mapping.IdentifierCollection;
 import org.hibernate.mapping.IndexedCollection;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Data
@@ -22,6 +23,6 @@ public class Course {
     private String title;
     private int credits;
 
-    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
-    private List<Enrollment> enrollments;
+    @OneToMany(mappedBy = "course",fetch = FetchType.LAZY)
+    private List<Enrollment> enrollments = new ArrayList<Enrollment>();
 }
