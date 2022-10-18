@@ -18,12 +18,11 @@ public class Enrollment {
     private Long enrollmentid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseid")
-    private Course course;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentid")
     private Student student;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseid")
+    private Course course;
 
     @Enumerated(EnumType.ORDINAL)
     private Grade grade;

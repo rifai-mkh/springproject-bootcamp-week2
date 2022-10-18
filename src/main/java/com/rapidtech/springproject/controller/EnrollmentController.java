@@ -1,5 +1,6 @@
 package com.rapidtech.springproject.controller;
 
+import com.rapidtech.springproject.dto.CourseReqDto;
 import com.rapidtech.springproject.dto.CourseResDto;
 import com.rapidtech.springproject.dto.EnrollmentReqDto;
 import com.rapidtech.springproject.dto.EnrollmentResDto;
@@ -19,9 +20,13 @@ public class EnrollmentController {
     public List<EnrollmentResDto> getAllEnrollments(){
         return enrollmentService.getAllEnrollments();
     }
-
     @PostMapping
     public EnrollmentResDto post(@RequestBody EnrollmentReqDto enrollmentReqDto) {
         return enrollmentService.insertEnrollment(enrollmentReqDto);
+    }
+    @PutMapping("/{enrollmentid}")
+    public EnrollmentResDto updateEnrollment(@PathVariable("enrollmentid") Long enrollmentid,
+                                     @RequestBody EnrollmentReqDto enrollmentReqDto){
+        return enrollmentService.updateEnrollment(enrollmentid,enrollmentReqDto);
     }
 }

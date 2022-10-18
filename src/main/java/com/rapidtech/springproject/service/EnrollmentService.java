@@ -8,4 +8,5 @@ import java.util.List;
 public interface EnrollmentService {
     List<EnrollmentResDto> getAllEnrollments();
     EnrollmentResDto insertEnrollment(EnrollmentReqDto enrollmentReqDto);
+    EnrollmentResDto updateEnrollment(Long enrollmentid, EnrollmentReqDto enrollmentReqDto);
 }

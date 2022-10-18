@@ -30,7 +30,7 @@ public class CourseController {
     }
 
     @PutMapping("/{courseid}")
-    public CourseResDto updateStudent(@PathVariable("courseid") Long courseid,
+    public CourseResDto updateCourse(@PathVariable("courseid") Long courseid,
                                        @RequestBody CourseReqDto courseReqDto){
         return courseService.updateCourse(courseid,courseReqDto);
     }

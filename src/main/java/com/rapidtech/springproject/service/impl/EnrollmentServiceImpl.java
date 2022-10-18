@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EnrollmentServiceImpl implements EnrollmentService {
@@ -26,16 +27,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    /* List<CourseResDto> courseResDtoList = new ArrayList<>();
-        List<Course> courseList = courseRepository.findAll();
-        for(Course course : courseList){
-            courseResDtoList.add(CourseResDto.builder()
-                    .courseid(course.getCourseid())
-                    .title(course.getTitle())
-                    .credits(course.getCredits())
-                    .build());
-        }
-        return courseResDtoList;*/
     @Override
     public List<EnrollmentResDto> getAllEnrollments() {
         List<EnrollmentResDto> enrollmentResDtos = new ArrayList<>();
@@ -65,5 +56,35 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         return EnrollmentResDto.builder().enrollmentid(result.getEnrollmentid())
                 .courseid(result.getCourse().getCourseid()).studentid(result.getStudent().getId())
                 .grade(result.getGrade()).build();
+    }
+
+    /*Optional<Course> updateCourse = courseRepository.findById(courseid);
+        Course result = new Course();
+        if(updateCourse.isPresent()){
+            Course course = updateCourse.get();
+            course.setTitle(courseReqDto.getTitle());
+            course.setCredits(courseReqDto.getCredits());
+            result = courseRepository.save(course);
+        }
+
+        return CourseResDto.builder().courseid(result.getCourseid())
+                .title(result.getTitle()).credits(result.getCredits()).build();
+    */
+
+    @Override
+    public EnrollmentResDto updateEnrollment(Long enrollmentid, EnrollmentReqDto enrollmentReqDto) {
+        Optional<Enrollment> updateEnrollment = enrollmentRepository.findById(enrollmentid);
+        Enrollment result = new Enrollment();
+        if(updateEnrollment.isPresent()){
+            Enrollment enrollment = updateEnrollment.get();
+            enrollment.getStudent().setId(enrollmentReqDto.getStudentid());
+            enrollment.getCourse().setCourseid(enrollmentReqDto.getCourseid());
+            enrollment.setGrade(enrollmentReqDto.getGrade());
+            result = enrollmentRepository.save(enrollment);
+        }
+        return EnrollmentResDto.builder().enrollmentid(result.getEnrollmentid())
+                .studentid(result.getStudent().getId())
+                .courseid(result.getCourse().getCourseid())
+                .build();
     }
 }
