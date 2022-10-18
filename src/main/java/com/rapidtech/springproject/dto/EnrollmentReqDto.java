@@ -17,8 +17,8 @@ import javax.persistence.Enumerated;
 @NoArgsConstructor
 public class EnrollmentReqDto {
 
-    private Long courseid;
     private Long studentid;
+    private Long courseid;
 
     @Enumerated(EnumType.ORDINAL)
     private Grade grade;

@@ -72,6 +72,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         return EnrollmentResDto.builder().enrollmentid(result.getEnrollmentid())
                 .studentid(result.getStudent().getId())
                 .courseid(result.getCourse().getCourseid())
+                .grade(result.getGrade())
                 .build();
     }
     @Override
