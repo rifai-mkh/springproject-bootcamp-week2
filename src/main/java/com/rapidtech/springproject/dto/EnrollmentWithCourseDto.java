@@ -8,13 +8,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Table;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
 public class EnrollmentWithCourseDto {
 
     @Enumerated(EnumType.ORDINAL)
