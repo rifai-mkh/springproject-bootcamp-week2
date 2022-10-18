@@ -1,10 +1,11 @@
 package com.rapidtech.springproject.service;
 
-import com.rapidtech.springproject.dto.EnrollmentDto;
 import com.rapidtech.springproject.dto.EnrollmentReqDto;
 import com.rapidtech.springproject.dto.EnrollmentResDto;
 
+import java.util.List;
+
 public interface EnrollmentService {
-    //void registerStudentToCourse(EnrollmentDto enrollmentDto);
+    List<EnrollmentResDto> getAllEnrollments();
     EnrollmentResDto insertEnrollment(EnrollmentReqDto enrollmentReqDto);
 }

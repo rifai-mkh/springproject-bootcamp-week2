@@ -12,6 +12,9 @@ import com.rapidtech.springproject.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class EnrollmentServiceImpl implements EnrollmentService {
     @Autowired
@@ -23,6 +26,29 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    /* List<CourseResDto> courseResDtoList = new ArrayList<>();
+        List<Course> courseList = courseRepository.findAll();
+        for(Course course : courseList){
+            courseResDtoList.add(CourseResDto.builder()
+                    .courseid(course.getCourseid())
+                    .title(course.getTitle())
+                    .credits(course.getCredits())
+                    .build());
+        }
+        return courseResDtoList;*/
+    @Override
+    public List<EnrollmentResDto> getAllEnrollments() {
+        List<EnrollmentResDto> enrollmentResDtos = new ArrayList<>();
+        List<Enrollment> enrollmentList = enrollmentRepository.findAll();
+        for (Enrollment enrollment : enrollmentList){
+            enrollmentResDtos.add(EnrollmentResDto.builder()
+                    .enrollmentid(enrollment.getEnrollmentid())
+                    .courseid(enrollment.getCourse().getCourseid())
+                    .studentid(enrollment.getStudent().getId())
+                    .grade(enrollment.getGrade()).build());
+        }
+        return enrollmentResDtos;
+    }
 
     @Override
     public EnrollmentResDto insertEnrollment(EnrollmentReqDto enrollmentReqDto) {
