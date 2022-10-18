@@ -29,4 +29,9 @@ public class EnrollmentController {
                                      @RequestBody EnrollmentReqDto enrollmentReqDto){
         return enrollmentService.updateEnrollment(enrollmentid,enrollmentReqDto);
     }
+    @DeleteMapping("/{enrollmentid}")
+    public String deleteEnrollment(@PathVariable("enrollmentid") Long enrollmentid){
+        enrollmentService.deleteEnrollment(enrollmentid);
+        return "Delete enrollment id: "+enrollmentid.toString()+" berhasil.";
+    }
 }

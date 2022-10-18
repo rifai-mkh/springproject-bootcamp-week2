@@ -58,19 +58,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                 .grade(result.getGrade()).build();
     }
 
-    /*Optional<Course> updateCourse = courseRepository.findById(courseid);
-        Course result = new Course();
-        if(updateCourse.isPresent()){
-            Course course = updateCourse.get();
-            course.setTitle(courseReqDto.getTitle());
-            course.setCredits(courseReqDto.getCredits());
-            result = courseRepository.save(course);
-        }
-
-        return CourseResDto.builder().courseid(result.getCourseid())
-                .title(result.getTitle()).credits(result.getCredits()).build();
-    */
-
     @Override
     public EnrollmentResDto updateEnrollment(Long enrollmentid, EnrollmentReqDto enrollmentReqDto) {
         Optional<Enrollment> updateEnrollment = enrollmentRepository.findById(enrollmentid);
@@ -86,5 +73,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                 .studentid(result.getStudent().getId())
                 .courseid(result.getCourse().getCourseid())
                 .build();
+    }
+    @Override
+    public void deleteEnrollment(Long enrollmentid) {
+        enrollmentRepository.deleteById(enrollmentid);
     }
 }

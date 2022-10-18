@@ -9,4 +9,5 @@ public interface EnrollmentService {
     List<EnrollmentResDto> getAllEnrollments();
     EnrollmentResDto insertEnrollment(EnrollmentReqDto enrollmentReqDto);
     EnrollmentResDto updateEnrollment(Long enrollmentid, EnrollmentReqDto enrollmentReqDto);
+    void deleteEnrollment(Long enrollmentid);
 }
