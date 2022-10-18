@@ -25,5 +25,6 @@ public class Enrollment {
     @JoinColumn(name = "studentid")
     private Student student;
 
-    private int grade;
+    @Enumerated(EnumType.ORDINAL)
+    private Grade grade;
 }

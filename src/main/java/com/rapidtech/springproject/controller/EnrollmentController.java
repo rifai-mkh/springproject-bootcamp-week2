@@ -1,6 +1,5 @@
 package com.rapidtech.springproject.controller;
 
-import com.rapidtech.springproject.dto.EnrollmentDto;
 import com.rapidtech.springproject.dto.EnrollmentReqDto;
 import com.rapidtech.springproject.dto.EnrollmentResDto;
 import com.rapidtech.springproject.service.EnrollmentService;
