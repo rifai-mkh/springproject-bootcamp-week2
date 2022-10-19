@@ -17,6 +17,12 @@ public class EnrollmentController {
     public List<EnrollmentDto> getAllEnrollments(){
         return enrollmentService.getAllEnrollments();
     }
+
+    @GetMapping("/{enrollmentid}")
+    public EnrollmentDto getById(@PathVariable("enrollmentid") Long enrollmentid){
+        return enrollmentService.getEnrollmentId(enrollmentid);
+    }
+
     @PostMapping
     public EnrollmentResDto post(@RequestBody EnrollmentReqDto enrollmentReqDto) {
         return enrollmentService.insertEnrollment(enrollmentReqDto);

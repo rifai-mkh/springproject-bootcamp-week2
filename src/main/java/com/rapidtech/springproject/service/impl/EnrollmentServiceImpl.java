@@ -49,6 +49,24 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         }
         return enrollmentDtos;
     }
+    @Override
+    public EnrollmentDto getEnrollmentId(Long enrollmentid) {
+        Enrollment enrollment = enrollmentRepository.findById(enrollmentid).get();
+        return  EnrollmentDto.builder().enrollmentid(enrollment.getEnrollmentid())
+                .studentResDto(StudentResDto.builder()
+                        .id(enrollment.getStudent().getId())
+                        .firstmidname(enrollment.getStudent().getFirstmidname())
+                        .lastname(enrollment.getStudent().getLastname())
+                        .enrollmentdate(enrollment.getStudent().getEnrollmentdate())
+                        .build())
+                .courseResDto(CourseResDto.builder()
+                        .courseid(enrollment.getCourse().getCourseid())
+                        .title(enrollment.getCourse().getTitle())
+                        .credits(enrollment.getCourse().getCredits())
+                        .build())
+                .grade(enrollment.getGrade())
+                .build();
+    }
 
     @Override
     public EnrollmentResDto insertEnrollment(EnrollmentReqDto enrollmentReqDto) {
