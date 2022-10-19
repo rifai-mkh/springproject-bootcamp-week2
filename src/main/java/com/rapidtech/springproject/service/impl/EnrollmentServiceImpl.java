@@ -1,7 +1,6 @@
 package com.rapidtech.springproject.service.impl;
 
-import com.rapidtech.springproject.dto.EnrollmentReqDto;
-import com.rapidtech.springproject.dto.EnrollmentResDto;
+import com.rapidtech.springproject.dto.*;
 import com.rapidtech.springproject.model.Course;
 import com.rapidtech.springproject.model.Enrollment;
 import com.rapidtech.springproject.model.Student;
@@ -28,17 +27,27 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     private StudentRepository studentRepository;
 
     @Override
-    public List<EnrollmentResDto> getAllEnrollments() {
-        List<EnrollmentResDto> enrollmentResDtos = new ArrayList<>();
+    public List<EnrollmentDto> getAllEnrollments() {
+        List<EnrollmentDto> enrollmentDtos = new ArrayList<>();
         List<Enrollment> enrollmentList = enrollmentRepository.findAll();
         for (Enrollment enrollment : enrollmentList){
-            enrollmentResDtos.add(EnrollmentResDto.builder()
+            enrollmentDtos.add(EnrollmentDto.builder()
                     .enrollmentid(enrollment.getEnrollmentid())
-                    .courseid(enrollment.getCourse().getCourseid())
-                    .studentid(enrollment.getStudent().getId())
-                    .grade(enrollment.getGrade()).build());
+                    .studentResDto(StudentResDto.builder()
+                            .id(enrollment.getStudent().getId())
+                            .firstmidname(enrollment.getStudent().getFirstmidname())
+                            .lastname(enrollment.getStudent().getLastname())
+                            .enrollmentdate(enrollment.getStudent().getEnrollmentdate())
+                            .build())
+                    .courseResDto(CourseResDto.builder()
+                            .courseid(enrollment.getCourse().getCourseid())
+                            .title(enrollment.getCourse().getTitle())
+                            .credits(enrollment.getCourse().getCredits())
+                            .build())
+                            .grade(enrollment.getGrade())
+                    .build());
         }
-        return enrollmentResDtos;
+        return enrollmentDtos;
     }
 
     @Override

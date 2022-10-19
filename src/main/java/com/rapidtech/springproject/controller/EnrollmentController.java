@@ -1,9 +1,6 @@
 package com.rapidtech.springproject.controller;
 
-import com.rapidtech.springproject.dto.CourseReqDto;
-import com.rapidtech.springproject.dto.CourseResDto;
-import com.rapidtech.springproject.dto.EnrollmentReqDto;
-import com.rapidtech.springproject.dto.EnrollmentResDto;
+import com.rapidtech.springproject.dto.*;
 import com.rapidtech.springproject.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +14,7 @@ public class EnrollmentController {
     private EnrollmentService enrollmentService;
 
     @GetMapping
-    public List<EnrollmentResDto> getAllEnrollments(){
+    public List<EnrollmentDto> getAllEnrollments(){
         return enrollmentService.getAllEnrollments();
     }
     @PostMapping
