@@ -23,6 +23,11 @@ public class CourseController {
         return courseService.getAllCourse();
     }
 
+    @GetMapping("/{courseid}")
+    public CourseResDto getCourseById(@PathVariable("courseid") Long courseid){
+        return courseService.getCourseById(courseid);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CourseResDto insertCourse(@RequestBody CourseReqDto courseReqDto){

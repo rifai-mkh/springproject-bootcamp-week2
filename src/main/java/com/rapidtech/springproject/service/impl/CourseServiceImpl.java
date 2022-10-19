@@ -32,6 +32,15 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public CourseResDto getCourseById(Long courseid) {
+        Course course = courseRepository.findById(courseid).get();
+        return  CourseResDto.builder().courseid(course.getCourseid())
+                .title(course.getTitle())
+                .credits(course.getCredits())
+                .build();
+    }
+
+    @Override
     public CourseResDto insertStudent(CourseReqDto courseReqDto) {
         Course newCourse = Course.builder()
                 .title(courseReqDto.getTitle())
